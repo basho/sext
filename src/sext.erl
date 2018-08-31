@@ -617,7 +617,7 @@ encode_bin_elems(B, Acc) ->
     <<Acc/binary, Enc/binary>>.
 
 encode_bin_elems_nif(_B, _End) ->
-    error(nif_not_loaded).
+    erlang:nif_error(nif_not_loaded).
 
 encode_neg_bits(<<>>) ->
     <<247>>;
@@ -962,10 +962,10 @@ decode_binary_maybe_nif(B)     ->
     end.
 
 decode_binary_nif(_Bin) ->
-    error(nif_not_loaded).
+    erlang:nif_error(nif_not_loaded).
 
 decode_nif(_Bin) ->
-    error(nif_not_loaded).
+    erlang:nif_error(nif_not_loaded).
 
 decode_binary(<<1:1,H:8,Rest/bitstring>>, N, Acc) ->
     case Rest of
